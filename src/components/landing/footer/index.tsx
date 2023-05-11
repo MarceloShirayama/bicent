@@ -1,3 +1,5 @@
+import Area from "../common/area";
+
 export default function Footer() {
-  return <div>Footer</div>;
+  return <Area>Footer</Area>;
 }

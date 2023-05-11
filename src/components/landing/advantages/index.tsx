@@ -1,3 +1,5 @@
+import Area from "../common/area";
+
 export default function Advantages() {
-  return <div>Advantages</div>;
+  return <Area>Advantages</Area>;
 }

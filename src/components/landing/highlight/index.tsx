@@ -1,3 +1,5 @@
+import Area from "../common/area";
+
 export default function Highlight() {
-  return <div>Highlight</div>;
+  return <Area>Highlight</Area>;
 }

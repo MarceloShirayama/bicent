@@ -1,3 +1,5 @@
+import Area from "../common/area";
+
 export default function Reviews() {
-  return <div>Reviews</div>;
+  return <Area>Reviews</Area>;
 }
