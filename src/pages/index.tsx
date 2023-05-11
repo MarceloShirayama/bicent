@@ -1,3 +1,5 @@
+import Page from "@/components/template/page";
+
 export default function Home() {
-  return <div>Bitcent</div>;
+  return <Page>Bitcent</Page>;
 }
