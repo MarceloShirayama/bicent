@@ -1,5 +1,5 @@
-import Page from "@/components/template/page";
+import Landing from "@/components/landing";
 
 export default function Home() {
-  return <Page>Bitcent</Page>;
+  return <Landing />;
 }
