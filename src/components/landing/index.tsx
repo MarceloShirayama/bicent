@@ -7,7 +7,7 @@ import Reviews from "./reviews";
 
 export default function Landing() {
   return (
-    <Page>
+    <Page external>
       <Header />
       <Highlight />
       <Advantages />
