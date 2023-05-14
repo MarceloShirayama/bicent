@@ -1,5 +1,10 @@
 {
-  "cSpell.words": ["Bitcent", "tailwindcss"],
+  "cSpell.words": [
+    "Bitcent",
+    "googleusercontent",
+    "tailwindcss",
+    "unsplash"
+  ],
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
 },
