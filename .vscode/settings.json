@@ -1,3 +1,6 @@
 {
-  "cSpell.words": ["Bitcent", "tailwindcss"]
+  "cSpell.words": ["Bitcent", "tailwindcss"],
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+},
 }
