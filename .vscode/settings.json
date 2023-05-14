@@ -2,8 +2,10 @@
   "cSpell.words": [
     "Bitcent",
     "googleusercontent",
+    "tabler",
     "tailwindcss",
-    "unsplash"
+    "unsplash",
+    "Youtube"
   ],
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
