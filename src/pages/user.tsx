@@ -6,7 +6,7 @@ export default function UserRegister() {
         <Page>
             <Header />
             <div>
-                Cadastro de Usuário
+                Usuário!!!
             </div>
         </Page>
     )
