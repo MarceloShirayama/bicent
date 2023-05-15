@@ -1,6 +1,6 @@
 // https://unicode-table.com/en/1F44B/
 
-import { fakeUser } from "@/data/constants/fakeUser";
+import { fakeUser } from "@/data/constants/fake-user";
 
 export default function Welcome() {
   const user = fakeUser;

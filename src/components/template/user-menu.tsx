@@ -1,4 +1,4 @@
-import { fakeUser } from "@/data/constants/fakeUser";
+import { fakeUser } from "@/data/constants/fake-user";
 import { Avatar, Menu } from "@mantine/core";
 import { IconArrowsRightLeft, IconLogout, IconUser } from "@tabler/icons-react";
 import Link from "next/link";
