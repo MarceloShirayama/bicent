@@ -17,7 +17,7 @@ export default function Advantages() {
         <Advantage
           image={advantage2}
           title="Organizado para você nunca mais esquecer uma conta"
-          subtitle="Visualize e acompanhe as suas finanças dia a dia. A organização mensal vai te ajudar a ter um controle claro das receitas e despesas!"
+          subtitle="Visualize e acompanhe as suas finanças dia a dia. A organização mensal vai te ajudar a ter um controle claro das revenues e expenses!"
           invert
         />
         <Advantage
