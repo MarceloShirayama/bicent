@@ -34,7 +34,12 @@ export default function Form(props: Props) {
         <TextInput
           label="Valor"
           value={FormatCurrency.format(data.value)}
-          onChange={() => {}}
+          onChange={(e) =>
+            setData({
+              ...data,
+              value: FormatCurrency.unFormat(e.currentTarget.value),
+            })
+          }
         />
 
         <DatePickerInput
