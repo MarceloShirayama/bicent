@@ -3,6 +3,7 @@ import { FormatCurrency } from "@/logic/utils/format-currency";
 import { Button, Group, Radio, TextInput } from "@mantine/core";
 import { DatePickerInput } from "@mantine/dates";
 import "dayjs/locale/pt-br";
+import { useState } from "react";
 
 type Props = {
   transaction: Transaction;
@@ -12,6 +13,8 @@ type Props = {
 };
 
 export default function Form(props: Props) {
+  const [transaction, setTransaction] = useState(props.transaction);
+
   return (
     <div className="flex flex-col border border-zinc-700 rounded-xl overflow-hidden">
       <div className="bg-black py-3 px-7 text-zinc-400">Formulário</div>
@@ -19,25 +22,30 @@ export default function Form(props: Props) {
       <div className="flex flex-col gap-4 p-4 sm:p-7">
         <TextInput
           label="Descrição"
-          value={props.transaction.description}
-          onChange={() => {}}
+          value={transaction.description}
+          onChange={(e) =>
+            setTransaction({
+              ...transaction,
+              description: e.currentTarget.value,
+            })
+          }
         />
 
         <TextInput
           label="Valor"
-          value={FormatCurrency.format(props.transaction.value)}
+          value={FormatCurrency.format(transaction.value)}
           onChange={() => {}}
         />
 
         <DatePickerInput
           label="Data"
-          value={props.transaction.date}
+          value={transaction.date}
           locale="pt-BR"
           valueFormat="DD/MM/YYYY"
           onChange={() => {}}
         />
 
-        <Radio.Group value={props.transaction.type} onChange={() => {}}>
+        <Radio.Group value={transaction.type} onChange={() => {}}>
           <Group>
             <Radio value={TransactionType.REVENUE} label="Receita" />
             <Radio value={TransactionType.EXPENSE} label="Despesa" />
@@ -49,7 +57,7 @@ export default function Form(props: Props) {
         <Button
           className="bg-green-500"
           color="green"
-          onClick={() => props.save?.(props.transaction)}
+          onClick={() => props.save?.(transaction)}
         >
           Salvar
         </Button>
@@ -59,11 +67,11 @@ export default function Form(props: Props) {
         </Button>
 
         <div className="flex-1"></div>
-        {props.transaction.id && (
+        {transaction.id && (
           <Button
             className="bg-red-500"
             color="red"
-            onClick={() => props.remove?.(props.transaction)}
+            onClick={() => props.remove?.(transaction)}
           >
             Excluir
           </Button>
