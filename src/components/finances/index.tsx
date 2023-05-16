@@ -6,6 +6,7 @@ import List from "./list";
 import { Transaction } from "@/logic/core/transaction/type";
 import { fakeTransactions } from "@/data/constants/fake-transactions";
 import Form from "./form";
+import NotFound from "../template/not-found";
 
 export default function Finances() {
   const [transactions, setTransactions] =
@@ -34,11 +35,13 @@ export default function Finances() {
             remove={remove}
             cancel={() => setTransaction(null)}
           />
-        ) : (
+        ) : transactions.length ? (
           <List
             transactions={transactions}
             selectTransaction={setTransaction}
           />
+        ) : (
+          <NotFound>Nenhuma transação encontrada.</NotFound>
         )}
       </Content>
     </Page>
