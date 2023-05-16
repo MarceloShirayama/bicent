@@ -5,15 +5,41 @@ import Page from "../template/page";
 import List from "./list";
 import { Transaction } from "@/logic/core/transaction/type";
 import { fakeTransactions } from "@/data/constants/fake-transactions";
+import Form from "./form";
 
 export default function Finances() {
-  const [transactions, setTransactions] = useState<Transaction[]>(fakeTransactions)
+  const [transactions, setTransactions] =
+    useState<Transaction[]>(fakeTransactions);
+
+  const [transaction, setTransaction] = useState<Transaction | null>(null);
+
+  const save = (transaction: Transaction) => {};
+
+  const remove = (transaction: Transaction) => {
+    const otherTransactions = transactions.filter(
+      (item) => item.id !== transaction.id
+    );
+    setTransactions(otherTransactions);
+    setTransaction(null);
+  };
 
   return (
     <Page>
       <Header />
-      <Content>
-        <List transactions={transactions} />
+      <Content className="gap-5">
+        {transaction ? (
+          <Form
+            transaction={transaction}
+            save={save}
+            remove={remove}
+            cancel={() => setTransaction(null)}
+          />
+        ) : (
+          <List
+            transactions={transactions}
+            selectTransaction={setTransaction}
+          />
+        )}
       </Content>
     </Page>
   );
