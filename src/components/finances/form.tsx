@@ -13,7 +13,7 @@ type Props = {
 };
 
 export default function Form(props: Props) {
-  const { data, setData } = useForm<Transaction>(props.transaction);
+  const { data, changeAttribute } = useForm<Transaction>(props.transaction);
 
   return (
     <div className="flex flex-col border border-zinc-700 rounded-xl overflow-hidden">
@@ -23,23 +23,13 @@ export default function Form(props: Props) {
         <TextInput
           label="Descrição"
           value={data.description}
-          onChange={(e) =>
-            setData({
-              ...data,
-              description: e.currentTarget.value,
-            })
-          }
+          onChange={changeAttribute("description")}
         />
 
         <TextInput
           label="Valor"
           value={FormatCurrency.format(data.value)}
-          onChange={(e) =>
-            setData({
-              ...data,
-              value: FormatCurrency.unFormat(e.currentTarget.value),
-            })
-          }
+          onChange={changeAttribute("value", FormatCurrency.unFormat)}
         />
 
         <DatePickerInput
@@ -47,10 +37,10 @@ export default function Form(props: Props) {
           value={data.date}
           locale="pt-BR"
           valueFormat="DD/MM/YYYY"
-          onChange={() => {}}
+          onChange={changeAttribute("date")}
         />
 
-        <Radio.Group value={data.type} onChange={() => {}}>
+        <Radio.Group value={data.type} onChange={changeAttribute("type")}>
           <Group>
             <Radio value={TransactionType.REVENUE} label="Receita" />
             <Radio value={TransactionType.EXPENSE} label="Despesa" />
