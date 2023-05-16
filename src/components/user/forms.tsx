@@ -1,3 +1,62 @@
+import { useForm } from "@/data/hooks/use-form";
+import MiniForm from "../template/mini-form";
+import { fakeUser } from "@/data/constants/fake-user";
+import { TextInput } from "@mantine/core";
+import { ValidateString } from "@/logic/utils/validate-string";
+import { FormatCpf } from "@/logic/utils/format-cpf";
+import { ValidateCpf } from "@/logic/utils/validate-cpf";
+import { FormatPhone } from "@/logic/utils/format-phone";
+
 export default function Forms() {
-  return <div>Formulários</div>;
+  const { data, changeAttribute } = useForm(fakeUser);
+
+  const save = async () => {
+    console.log("save");
+  };
+
+  return (
+    <div className="flex flex-col gap-5 mt-7">
+      <div>
+        <MiniForm
+          title="Seu nome"
+          description="Como você gostaria de ser chamado?"
+          footerMessage="O nome deve possuir entre 3 e 80 caracteres, mais que isso já é um texto!"
+          canSave={ValidateString.lengthIsBetween(data.name, 3, 80)}
+          save={save}
+        >
+          <TextInput value={data.name} onChange={changeAttribute("name")} />
+        </MiniForm>
+      </div>
+
+      <div>
+        <MiniForm
+          title="CPF"
+          description="Seu CPF é usado internamente pelo sistema."
+          footerMessage="Pode relaxar, daqui ele não sai!"
+          canSave={ValidateCpf.isValid(data.cpf ?? "")}
+          save={save}
+        >
+          <TextInput
+            value={FormatCpf.format(data.cpf ?? "")}
+            onChange={changeAttribute("cpf", FormatCpf.unFormat)}
+          />
+        </MiniForm>
+      </div>
+
+      <div>
+        <MiniForm
+          title="Telefone"
+          description="Usado para notificações importantes sobre a sua conta."
+          footerMessage="Se receber ligação a cobrar, não foi a gente!"
+          canSave={true}
+          save={save}
+        >
+          <TextInput
+            value={FormatPhone.format(data.phone ?? "")}
+            onChange={changeAttribute("phone")}
+          />
+        </MiniForm>
+      </div>
+    </div>
+  );
 }
