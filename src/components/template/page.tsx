@@ -1,3 +1,5 @@
+import ForceAuthentication from "../auth/force-authentication";
+
 type Props = {
   external?: boolean;
   children: any;
@@ -5,7 +7,7 @@ type Props = {
 };
 
 export default function Page(props: Props) {
-  return (
+  const render = () => (
     <div
       className={`
                 flex flex-col min-h-screen
@@ -15,5 +17,11 @@ export default function Page(props: Props) {
     >
       {props.children}
     </div>
+  );
+
+  return props.external ? (
+    render()
+  ) : (
+    <ForceAuthentication>{render()}</ForceAuthentication>
   );
 }

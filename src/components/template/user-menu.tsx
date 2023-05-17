@@ -1,22 +1,21 @@
-import { fakeUser } from "@/data/constants/fake-user";
+import { AuthContext } from "@/data/contexts/auth-context";
 import { Avatar, Menu } from "@mantine/core";
 import { IconArrowsRightLeft, IconLogout, IconUser } from "@tabler/icons-react";
 import Link from "next/link";
+import { useContext } from "react";
 
 export default function UserMenu() {
-  const user = fakeUser;
-
-  const logout = () => {
-    console.log("logout");
-  };
+  const { user, logout } = useContext(AuthContext);
 
   return (
     <Menu>
       <Menu.Target>
         <div className="flex items-center gap-3 cursor-pointer">
           <div className="hidden md:flex flex-col select-none">
-            <span className="text-sm font-bold text-zinc-200">{user.name}</span>
-            <span className="text-xs text-zinc-400">{user.email}</span>
+            <span className="text-sm font-bold text-zinc-200">
+              {user?.name}
+            </span>
+            <span className="text-xs text-zinc-400">{user?.email}</span>
           </div>
           <Avatar
             size={40}

@@ -27,8 +27,8 @@ export class Authentication {
     return this.convertToAppUser(resp.user);
   }
 
-  async logout() {
-    return signOut;
+  async logout(): Promise<void> {
+    return signOut(this._auth);
   }
 
   monitor(notify: MonitorUser): CancelMonitorUser {
