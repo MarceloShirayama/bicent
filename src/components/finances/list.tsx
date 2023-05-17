@@ -36,7 +36,7 @@ export default function List(props: Props) {
       {renderType(transaction)}
       <span className="w-full md:w-1/2">{transaction.description}</span>
       <span className="hidden md:inline flex-1">
-        {FormatDate.ddmmyy.format(transaction.date)}
+        {FormatDate.dd_mm_yy.format(transaction.date)}
       </span>
       <span>{FormatCurrency.format(transaction.value)}</span>
     </div>

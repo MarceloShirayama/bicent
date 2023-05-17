@@ -1,5 +1,5 @@
+import { services } from "@/logic/core";
 import { User } from "@/logic/core/user/types";
-import { Authentication } from "@/logic/firebase/auth/authentication";
 import { createContext, useEffect, useState } from "react";
 
 type Props = {
@@ -22,23 +22,27 @@ export function AuthProvider(props: any) {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<User | null>(null);
 
-  const auth = new Authentication();
-
-  const updateUser = async (newUser: User) => {};
+  const updateUser = async (newUser: User) => {
+    if (user && user.email !== newUser.email) return logout();
+    if (user && newUser.email && user.email === newUser.email) {
+      await services.user.save(newUser);
+      setUser(newUser);
+    }
+  };
 
   const loginGoogle = async () => {
-    const user = await auth.loginGoogle();
+    const user = await services.user.loginGoogle();
     setUser(user);
     return user;
   };
 
   const logout = async () => {
-    await auth.logout();
+    await services.user.logout();
     setUser(null);
   };
 
   useEffect(() => {
-    const cancel = auth.monitor((user) => {
+    const cancel = services.user.monitorAuth((user) => {
       setUser(user);
       setLoading(false);
     });

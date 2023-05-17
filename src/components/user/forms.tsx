@@ -1,18 +1,29 @@
 import { useForm } from "@/data/hooks/use-form";
 import MiniForm from "../template/mini-form";
-import { fakeUser } from "@/data/constants/fake-user";
 import { TextInput } from "@mantine/core";
 import { ValidateString } from "@/logic/utils/validate-string";
 import { FormatCpf } from "@/logic/utils/format-cpf";
 import { ValidateCpf } from "@/logic/utils/validate-cpf";
 import { FormatPhone } from "@/logic/utils/format-phone";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "@/data/contexts/auth-context";
+import { User } from "@/logic/core/user/types";
 
 export default function Forms() {
-  const { data, changeAttribute } = useForm(fakeUser);
+  const { user, updateUser } = useContext(AuthContext);
+  const { data, changeAttribute, changeData } = useForm<User>();
 
   const save = async () => {
-    console.log("save");
+    if (!user) return;
+
+    await updateUser(data);
   };
+
+  useEffect(() => {
+    if (!user) return;
+
+    changeData(user);
+  }, [changeData, user]);
 
   return (
     <div className="flex flex-col gap-5 mt-7">
