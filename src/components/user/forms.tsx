@@ -2,9 +2,9 @@ import { useForm } from "@/data/hooks/use-form";
 import MiniForm from "../template/mini-form";
 import { TextInput } from "@mantine/core";
 import { ValidateString } from "@/logic/utils/validate-string";
-import { FormatCpf } from "@/logic/utils/cpf";
+import { HandleCpf } from "@/logic/utils/cpf";
 import { ValidateCpf } from "@/logic/utils/validate-cpf";
-import { FormatPhone } from "@/logic/utils/phone";
+import { HandlePhone } from "@/logic/utils/phone";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "@/data/contexts/auth-context";
 import { User } from "@/logic/core/user/types";
@@ -48,8 +48,8 @@ export default function Forms() {
           save={save}
         >
           <TextInput
-            value={FormatCpf.format(data.cpf ?? "")}
-            onChange={changeAttribute("cpf", FormatCpf.unFormat)}
+            value={HandleCpf.format(data.cpf ?? "")}
+            onChange={changeAttribute("cpf", HandleCpf.unFormat)}
           />
         </MiniForm>
       </div>
@@ -63,7 +63,7 @@ export default function Forms() {
           save={save}
         >
           <TextInput
-            value={FormatPhone.format(data.phone ?? "")}
+            value={HandlePhone.format(data.phone ?? "")}
             onChange={changeAttribute("phone")}
           />
         </MiniForm>

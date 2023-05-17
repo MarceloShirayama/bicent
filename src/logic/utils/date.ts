@@ -1,4 +1,4 @@
-export class FormatDate {
+export class HandleDate {
   private static _language = "pt-BR";
 
   static dd_mm_yy = {
@@ -11,8 +11,8 @@ export class FormatDate {
   };
 
   static mm_yy = {
-    format(dt: Date, lingua?: string): string {
-      return dt?.toLocaleDateString?.(lingua ?? FormatDate._language, {
+    format(dt: Date, language?: string): string {
+      return dt?.toLocaleDateString?.(language ?? HandleDate._language, {
         month: "long",
         year: "numeric",
       } as Intl.DateTimeFormatOptions);
@@ -21,7 +21,7 @@ export class FormatDate {
 
   static dd_mm = {
     format(dt: Date): string {
-      return dt?.toLocaleDateString?.(FormatDate._language, {
+      return dt?.toLocaleDateString?.(HandleDate._language, {
         day: "2-digit",
         month: "short",
       } as Intl.DateTimeFormatOptions);
@@ -33,7 +33,7 @@ export class FormatDate {
       .fill(0)
       .map((_, i) =>
         new Date(2000, i, 1)
-          .toLocaleDateString(FormatDate._language, { month: "short" })
+          .toLocaleDateString(HandleDate._language, { month: "short" })
           .toUpperCase()
           .substring(0, 3)
       );

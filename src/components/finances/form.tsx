@@ -1,6 +1,6 @@
 import { useForm } from "@/data/hooks/use-form";
 import { Transaction, TransactionType } from "@/logic/core/transaction/type";
-import { FormatCurrency } from "@/logic/utils/currency";
+import { HandleCurrency } from "@/logic/utils/currency";
 import { Button, Group, Radio, TextInput } from "@mantine/core";
 import { DatePickerInput } from "@mantine/dates";
 import "dayjs/locale/pt-br";
@@ -28,8 +28,8 @@ export default function Form(props: Props) {
 
         <TextInput
           label="Valor"
-          value={FormatCurrency.format(data.value)}
-          onChange={changeAttribute("value", FormatCurrency.unFormat)}
+          value={HandleCurrency.format(data.value)}
+          onChange={changeAttribute("value", HandleCurrency.unFormat)}
         />
 
         <DatePickerInput

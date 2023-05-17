@@ -1,6 +1,6 @@
 import { Transaction } from "@/logic/core/transaction/type";
-import { FormatCurrency } from "@/logic/utils/currency";
-import { FormatDate } from "@/logic/utils/date";
+import { HandleCurrency } from "@/logic/utils/currency";
+import { HandleDate } from "@/logic/utils/date";
 import { IconTrendingDown, IconTrendingUp } from "@tabler/icons-react";
 
 type Props = {
@@ -36,9 +36,9 @@ export default function List(props: Props) {
       {renderType(transaction)}
       <span className="w-full md:w-1/2">{transaction.description}</span>
       <span className="hidden md:inline flex-1">
-        {FormatDate.dd_mm_yy.format(transaction.date)}
+        {HandleDate.dd_mm_yy.format(transaction.date)}
       </span>
-      <span>{FormatCurrency.format(transaction.value)}</span>
+      <span>{HandleCurrency.format(transaction.value)}</span>
     </div>
   );
 

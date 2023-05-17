@@ -1,13 +1,13 @@
-export class FormatCpf {
+export class HandleCpf {
   private static _default = "???.???.???-??";
 
   static format(valor: string) {
-    const unFormatted = FormatCpf.unFormat(valor).split("");
+    const unFormatted = HandleCpf.unFormat(valor).split("");
 
     const formatted = unFormatted
       .reduce(
         (formatted: string, num: string) => formatted.replace("?", num),
-        FormatCpf._default
+        HandleCpf._default
       )
       .split("?")[0]
       .replace(/[-.]$/, "");

@@ -1,11 +1,11 @@
-export class FormatCurrency {
+export class HandleCurrency {
   private static _language = "pt-BR";
   private static _currency = "BRL";
 
   static format(num: number) {
-    return (num ?? 0).toLocaleString(FormatCurrency._language, {
+    return (num ?? 0).toLocaleString(HandleCurrency._language, {
       style: "currency",
-      currency: FormatCurrency._currency,
+      currency: HandleCurrency._currency,
     });
   }
 

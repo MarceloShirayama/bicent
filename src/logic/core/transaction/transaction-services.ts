@@ -1,7 +1,7 @@
 import { Collection } from "@/logic/firebase/db/collection";
 import { Transaction } from "./type";
 import { User } from "../user/types";
-import { FormatDate } from "@/logic/utils/date";
+import { HandleDate } from "@/logic/utils/date";
 
 export class TransactionServices {
   private _collection = new Collection();
@@ -23,8 +23,8 @@ export class TransactionServices {
     const path = `finances/${user.email}/transactions`;
 
     return await this._collection.findAllWithFilter(path, [
-      { attribute: "date", op: ">=", value: FormatDate.firstDay(date) },
-      { attribute: "date", op: "<=", value: FormatDate.lastDay(date) },
+      { attribute: "date", op: ">=", value: HandleDate.firstDay(date) },
+      { attribute: "date", op: "<=", value: HandleDate.lastDay(date) },
     ]);
   }
 

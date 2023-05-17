@@ -1,14 +1,14 @@
-export class FormatPhone {
+export class HandlePhone {
   // TODO: melhorar lógica
   private static _default = "(??) ?????-????";
 
   static format(valor: string) {
-    const unFormatted = FormatPhone.unFormat(valor).split("");
+    const unFormatted = HandlePhone.unFormat(valor).split("");
 
     const formatted = unFormatted
       .reduce((formatted: string, num: string) => {
         return formatted.replace("?", num);
-      }, FormatPhone._default)
+      }, HandlePhone._default)
       .split("?")[0]
       .trim()
       .replace(/[()-]$/, "");
