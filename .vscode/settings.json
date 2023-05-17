@@ -4,6 +4,7 @@
     "dayjs",
     "ddmmyy",
     "esnext",
+    "firestore",
     "googleusercontent",
     "mantine",
     "tabler",
