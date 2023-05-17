@@ -1,5 +1,4 @@
 import { services } from "@/logic/core";
-import { Id } from "@/logic/core/common/id";
 import { Transaction } from "@/logic/core/transaction/type";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../contexts/auth-context";
@@ -7,13 +6,16 @@ import { AuthContext } from "../contexts/auth-context";
 export const useTransaction = () => {
   const { user } = useContext(AuthContext);
   const [transactions, setTransactions] = useState<Transaction[]>([]);
-
+  const [date, setDate] = useState<Date>(new Date());
   const [transaction, setTransaction] = useState<Transaction | null>(null);
 
   const searchTransactions = async () => {
     if (!user) return;
 
-    const transactionsFound = await services.transaction.findAll(user);
+    const transactionsFound = await services.transaction.findAllByMonth(
+      user,
+      date
+    );
 
     setTransactions(transactionsFound);
   };
@@ -37,13 +39,15 @@ export const useTransaction = () => {
   useEffect(() => {
     searchTransactions();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [date]);
 
   return {
+    date,
     transaction,
     transactions,
     save,
     remove,
     setTransaction,
+    setDate,
   };
 };

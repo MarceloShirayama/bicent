@@ -14,22 +14,35 @@ import Page from "../template/page";
 import Form from "./form";
 import List from "./list";
 import { useTransaction } from "@/data/hooks/use-transaction";
+import { FieldMonthYear } from "../template/field-month-year";
 
 export default function Finances() {
-  const { remove, save, transaction, transactions, setTransaction } =
-    useTransaction();
+  const {
+    remove,
+    save,
+    transaction,
+    transactions,
+    setTransaction,
+    date,
+    setDate,
+  } = useTransaction();
 
   return (
     <Page>
       <Header />
       <Content className="gap-5">
-        <Button
-          className="bg-blue-500"
-          leftIcon={<IconPlus />}
-          onClick={() => setTransaction(emptyTransaction)}
-        >
-          Nova transação
-        </Button>
+        <div className="flex justify-between">
+          <FieldMonthYear date={date} dateChanged={setDate} />
+          <div className="flex gap-5">
+            <Button
+              className="bg-blue-500"
+              leftIcon={<IconPlus />}
+              onClick={() => setTransaction(emptyTransaction)}
+            >
+              Nova transação
+            </Button>
+          </div>
+        </div>
 
         {transaction ? (
           <Form
