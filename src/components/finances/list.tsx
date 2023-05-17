@@ -1,6 +1,6 @@
 import { Transaction } from "@/logic/core/transaction/type";
-import { FormatCurrency } from "@/logic/utils/format-currency";
-import { FormatDate } from "@/logic/utils/format-date";
+import { FormatCurrency } from "@/logic/utils/currency";
+import { FormatDate } from "@/logic/utils/date";
 import { IconTrendingDown, IconTrendingUp } from "@tabler/icons-react";
 
 type Props = {

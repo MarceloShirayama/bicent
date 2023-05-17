@@ -1,7 +1,7 @@
 import { Collection } from "@/logic/firebase/db/collection";
 import { Transaction } from "./type";
 import { User } from "../user/types";
-import { FormatDate } from "@/logic/utils/format-date";
+import { FormatDate } from "@/logic/utils/date";
 
 export class TransactionServices {
   private _collection = new Collection();

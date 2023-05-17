@@ -1,6 +1,6 @@
 import { useForm } from "@/data/hooks/use-form";
 import { Transaction, TransactionType } from "@/logic/core/transaction/type";
-import { FormatCurrency } from "@/logic/utils/format-currency";
+import { FormatCurrency } from "@/logic/utils/currency";
 import { Button, Group, Radio, TextInput } from "@mantine/core";
 import { DatePickerInput } from "@mantine/dates";
 import "dayjs/locale/pt-br";
