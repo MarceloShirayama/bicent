@@ -3,10 +3,13 @@ import { Transaction } from "@/logic/core/transaction/type";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../contexts/auth-context";
 
+export type Display = "list" | "grid";
+
 export const useTransaction = () => {
   const { user } = useContext(AuthContext);
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [date, setDate] = useState<Date>(new Date());
+  const [display, setDisplay] = useState<Display>("list");
   const [transaction, setTransaction] = useState<Transaction | null>(null);
 
   const searchTransactions = async () => {
@@ -45,9 +48,11 @@ export const useTransaction = () => {
     date,
     transaction,
     transactions,
+    display,
     save,
     remove,
     setTransaction,
     setDate,
+    setDisplay,
   };
 };
