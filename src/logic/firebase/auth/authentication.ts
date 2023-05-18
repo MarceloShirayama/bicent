@@ -43,11 +43,13 @@ export class Authentication {
 
     const alternativeName = firebaseUser.email.split("@")[0];
 
-    return {
+    const user = {
       id: firebaseUser.uid,
       name: firebaseUser.displayName ?? alternativeName,
       email: firebaseUser.email,
       imageUrl: firebaseUser.photoURL,
     };
+
+    return user;
   }
 }
