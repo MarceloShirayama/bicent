@@ -5,7 +5,7 @@ import { IconTrendingDown, IconTrendingUp } from "@tabler/icons-react";
 
 type Props = {
   transactions: Transaction[];
-  selectTransaction?: (transaction: Transaction) => void;
+  setTransaction?: (transaction: Transaction) => void;
 };
 
 export default function List(props: Props) {
@@ -31,7 +31,7 @@ export default function List(props: Props) {
                 flex items-center gap-3 p-3 cursor-pointer
                 ${index % 2 === 0 ? "bg-zinc-900" : "bg-zinc-800"} 
             `}
-      onClick={() => props.selectTransaction?.(transaction)}
+      onClick={() => props.setTransaction?.(transaction)}
     >
       {renderType(transaction)}
       <span className="w-full md:w-1/2">{transaction.description}</span>
