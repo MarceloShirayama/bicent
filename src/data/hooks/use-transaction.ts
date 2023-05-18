@@ -1,6 +1,6 @@
 import { services } from "@/logic/core";
 import { Transaction } from "@/logic/core/transaction/type";
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { AuthContext } from "../contexts/auth-context";
 
 export type Display = "list" | "grid";
@@ -12,7 +12,7 @@ export const useTransaction = () => {
   const [display, setDisplay] = useState<Display>("list");
   const [transaction, setTransaction] = useState<Transaction | null>(null);
 
-  const searchTransactions = async () => {
+  const searchTransactions = useCallback(async () => {
     if (!user) return;
 
     const transactionsFound = await services.transaction.findAllByMonth(
@@ -21,7 +21,7 @@ export const useTransaction = () => {
     );
 
     setTransactions(transactionsFound);
-  };
+  }, [date, user]);
 
   const save = async (transaction: Transaction) => {
     if (!user) return;
@@ -41,8 +41,7 @@ export const useTransaction = () => {
 
   useEffect(() => {
     searchTransactions();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [date]);
+  }, [searchTransactions]);
 
   return {
     date,
